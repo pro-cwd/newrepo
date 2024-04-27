@@ -21,6 +21,14 @@ body {
   background-position: center;
 }
 
+.img-body {
+  background-image: url('../images/vehicles/delorean.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+}
+
 .frame-card {
   margin:30px auto;
   max-width: 1280px;
