@@ -22,22 +22,26 @@ body {
 }
 
 .img-body {
+  width: 100%;
+  height: 400px;
   background-image: url('../images/vehicles/delorean.jpg');
   background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
   background-position: center;
+  background-size: contain;
+  background-position: top;
 }
 
 .frame-card {
   margin:30px auto;
-  max-width: 1280px;
+  max-width: 1180px;
+  height: auto;
   background-color: white;
   border: 2px solid green;
   border-radius: 20px;
+  padding: 0 1rem;
 }
 
-.picture-img {
+.container {
   width: 100%;
   height: auto;
 }
@@ -46,21 +50,48 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: auto;
+  width: 100%;
+}
+
+.header-title span {
+  margin: 50px 0 50px;
 }
 
 .header-title a {
   text-decoration: none;
 }
 
-.header-title:first-child a {
+.header-title span a {
   font-size: 3rem;
   font-weight: 800;
   color: black;
 }
 
+.header-title div a {
+  font-size: 1rem;
+  font-weight: 800;
+  color: black;
+}
+
 .white-box {
-  background-color: rgba(white, white, white, 0.5);
+  margin-left: 3rem;
+  font-size: 2rem;
+  font-weight: 500;
+  color: green;
+  background-color: rgba(255, 255, 255, 0.7);
   border-radius: 20%;
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+}
+
+.white-box h5 {
+  margin: 2px;
+}
+
+.white-box .space-pad {
+  padding: 1em;
 }
 
 .white-box {
@@ -95,7 +126,68 @@ body {
 }
 
 .block-services {
+  margin-top: 10rem;
   display: flex;
   justify-content: center;
+  flex-wrap: wrap-reverse;
+}
+
+.button {
+  width: 150px;
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.btn1-img {
+  background-image: url('../images/upgrades/flux-cap.png');
+}
+.btn2-img {
+  background-image: url('../images/upgrades/flame.jpg');
+}
+.btn3-img {
+  background-image: url('../images/upgrades/bumper_sticker.jpg');
+}
+.btn4-img {
+  background-image: url('../images/upgrades/hub-cap.jpg');
+}
+
+.btn-img {
+  width: 100px;
+  height: 60px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: green;
+  margin: 1em;
+}
+
+.btn-img span {
+  display: block;
+  margin-top: 5em;
+  font-size: 0.8rem;
+}
+
+.png-box {
+  width: 400px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
   flex-wrap: wrap;
+}
+.line-h {
+  line-height: 1.9;
+}
+
+@media only screen and (max-width: 900px) {
+  .block-services {
+    margin-top: 4rem;
+  }
 }
