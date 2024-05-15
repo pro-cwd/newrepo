@@ -13,7 +13,7 @@ const app = express();
 const static = require("./routes/static");
 const utilities = require("./utilities/");
 const inventoryRoute = require("./routes/inventoryRoute");
-const pool = require("./database");
+// const pool = require("./database");
 
 /* ***********************
  * View Engine and Templates
@@ -28,13 +28,8 @@ app.set("layout", "./layouts/layout"); // not at views root
 app.use(static);
 // Index route
 // app.get("/", baseController.buildHome);
+app.get("/", utilities.handleErrors(baseController.buildHome));
 //inventory routes - unit 3, activity
-// Index route
-app.get(
-  "/",
-  baseController.buildHome,
-  utilities.handleErrors(baseController.buildHome)
-);
 // Inventory routes
 app.use("/inv", inventoryRoute);
 
