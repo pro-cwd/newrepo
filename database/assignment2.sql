@@ -38,25 +38,7 @@ FROM public.inventory AS inv
 WHERE class.classification_name = 'Sport';
 -- Update all records in the inventory table to add `/vehicles` to the middle of the file path in the inv_image and inv_thumbnail columns using a single query
 UPDATE public.inventory
-SET inv_image = CONCAT(
-        SUBSTRING(
-            inv_image
-            FROM 1 FOR POSITION('/' IN inv_image) + 7
-        ),
-        'vehicles',
-        SUBSTRING(
-            inv_image
-            FROM POSITION('/' IN inv_image) + 8
-        )
-    ),
-    inv_thumbnail = CONCAT(
-        SUBSTRING(
-            inv_thumbnail
-            FROM 1 FOR POSITION('/' IN inv_thumbnail) + 7
-        ),
-        'vehicles',
-        SUBSTRING(
-            inv_thumbnail
-            FROM POSITION('/' IN inv_thumbnail) + 8
-        )
-    );
+SET inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+    inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/')
+WHERE inv_image LIKE '/images/%'
+    AND inv_thumbnail LIKE '/images/%';
