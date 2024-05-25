@@ -61,12 +61,12 @@ app.use(async (err, req, res, next) => {
  * Values from .env (environment) file
  *************************/
 
-const port = process.env.PORT;
-const host = process.env.HOST;
+const port = process.env.PORT || 5432;
+const host = process.env.HOST || "dpg-cp2oihcf7o1s73bkkih0-a";
 
 /* ***********************
  * Log statement to confirm server operation
  *************************/
-app.listen(port, host, () => {
+app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`);
 });
