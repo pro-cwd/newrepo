@@ -41,23 +41,23 @@ app.use(async (req, res, next) => {
  * Express Error Handler
  * Place after all other middleware
  *************************/
-app.use(async (err, req, res, next) => {
-  const nav = await utilities.getNav();
-  console.error(`Error at: "${req.originalUrl}": ${err.message}`);
-  res.render("errors/error", {
-    title: err.status || "Server Error",
-    message: err.message,
-    nav,
-  });
-});
+// app.use(async (err, req, res, next) => {
+//   const nav = await utilities.getNav();
+//   console.error(`Error at: "${req.originalUrl}": ${err.message}`);
+//   res.render("errors/error", {
+//     title: err.status || "Server Error",
+//     message: err.message,
+//     nav,
+//   });
+// });
 
 /* ***********************
  * Local Server Information
  * Values from .env (environment) file
  *************************/
 
-const host = process.env.HOST;
 const port = process.env.PORT || 5432;
+const host = process.env.HOST || "dpg-cp2oihcf7o1s73bkkih0-a";
 
 /* ***********************
  * Log statement to confirm server operation
