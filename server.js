@@ -38,6 +38,21 @@ app.use(async (req, res, next) => {
 });
 
 /* ***********************
+ * Local Server Information
+ * Values from .env (environment) file
+ *************************/
+
+const host = process.env.HOST;
+const port = process.env.PORT || 5432;
+
+/* ***********************
+ * Log statement to confirm server operation
+ *************************/
+app.listen(port, () => {
+  console.log(`app listening on ${host}:${port}`);
+});
+
+/* ***********************
  * Express Error Handler
  * Place after all other middleware
  *************************/
@@ -54,19 +69,4 @@ app.use(async (err, req, res, next) => {
     message,
     nav,
   });
-});
-
-/* ***********************
- * Local Server Information
- * Values from .env (environment) file
- *************************/
-
-const port = process.env.PORT || 5432;
-const host = process.env.HOST;
-
-/* ***********************
- * Log statement to confirm server operation
- *************************/
-app.listen(port, () => {
-  console.log(`app listening on ${host}:${port}`);
 });
