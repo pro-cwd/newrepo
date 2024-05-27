@@ -32,11 +32,6 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes
 app.use("/inv", inventoryRoute);
 
-// File Not Found Route - must be last route in list
-app.use(async (req, res, next) => {
-  next({ status: 404, message: "Sorry, we appear to have lost that page." });
-});
-
 /* ***********************
  * Express Error Handler
  * Place after all other middleware
@@ -70,4 +65,9 @@ const host = process.env.HOST;
 
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`);
+});
+
+// File Not Found Route - must be last route in list
+app.use(async (req, res, next) => {
+  next({ status: 404, message: "Sorry, we appear to have lost that page." });
 });
