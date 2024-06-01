@@ -9,6 +9,11 @@ router.get(
   "/type/:classificationId",
   utilities.handleErrors(invController.buildByClassificationId)
 );
-//router.get("/type/:vehicleDetails", invController.buildByVehicleDetailsId);
+
+// Route to build inventory by vehicle details view
+router.get(
+  "/type/details/:vehicleDetailsId",
+  utilities.handleErrors(invController.buildByVehicleDetailsId)
+);
 
 module.exports = router;

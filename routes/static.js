@@ -13,5 +13,4 @@ router.use(
 router.use("/js", express.static(path.join(__dirname, "../public/js")));
 router.use("/images", express.static(path.join(__dirname, "../public/images")));
 
-console.log("__dirname is", __dirname);
 module.exports = router;

@@ -194,3 +194,74 @@ body {
     margin-top: 4rem;
   }
 }
+
+/* GRID CONTAINERS CLASIFICATION */
+
+/* Estilos para el contenedor del grid */
+.grid-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+  justify-content: center;
+}
+
+/* Estilos para cada ítem del grid */
+.grid-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: calc(33.333% - 20px); /* Tres ítems por fila con espacio */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  margin-bottom: 20px;
+}
+
+/* Estilo para la imagen del vehículo */
+.vehicle-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilos para el nombre y el precio */
+.namePrice {
+  padding: 15px;
+  text-align: center;
+}
+
+.namePrice h2 {
+  margin: 10px 0;
+  font-size: 1.2em;
+}
+
+.vehicle-price {
+  display: block;
+  font-size: 1.1em;
+  color: #333;
+}
+
+.grid-item:hover {
+  transform: scale(1.05);
+}
+
+/* Media Queries para estilos responsivos */
+
+/* Tablets y dispositivos más pequeños */
+@media (max-width: 768px) {
+  .grid-item {
+    width: calc(50% - 20px); /* Dos ítems por fila */
+  }
+}
+
+/* Móviles y dispositivos más pequeños */
+@media (max-width: 480px) {
+  .grid-item {
+    width: calc(100% - 20px); /* Un ítem por fila */
+  }
+}
+
+
