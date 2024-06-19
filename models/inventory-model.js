@@ -36,7 +36,7 @@ async function getVehicleById(inventoryId) {
       WHERE i.inventory_id = $1`,
       [inventoryId]
     );
-    return data.rows[0]; // Assuming only one vehicle corresponds to the inventory ID
+    return data.rows; // Assuming only one vehicle corresponds to the inventory ID
   } catch (error) {
     console.error("getVehicleById error: " + error);
     throw error; // Propagate the error for handling in upper layers

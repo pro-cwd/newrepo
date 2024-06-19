@@ -6,11 +6,22 @@ const router = new express.Router();
 router.use(express.static(path.join(__dirname, "../public")));
 
 // Serve CSS files from the correct directory
-router.use(
-  "/inv/type/css",
-  express.static(path.join(__dirname, "../public/css"))
-);
-router.use("/js", express.static(path.join(__dirname, "../public/js")));
-router.use("/images", express.static(path.join(__dirname, "../public/images")));
+
+const routes = ["type", "detail"];
+
+routes.forEach((route) => {
+  router.use(
+    `/inv/${route}/css`,
+    express.static(path.join(__dirname, "../public/css"))
+  );
+  router.use(
+    `/inv/${route}/js`,
+    express.static(path.join(__dirname, "../public/js"))
+  );
+  router.use(
+    `/inv/${route}/images`,
+    express.static(path.join(__dirname, "../public/images"))
+  );
+});
 
 module.exports = router;
