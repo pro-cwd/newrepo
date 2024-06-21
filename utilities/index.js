@@ -86,13 +86,7 @@ Util.buildVehicleDetails = async function (vehicle) {
 
   if (vehicle) {
     details = '<div id="vehicle-details" class="details-container">';
-    details +=
-      "<h1>" +
-      vehicle.inv +
-      vehicle.inv_make +
-      " " +
-      vehicle.inv_model +
-      "</h1>";
+    details += '<div class="vehicle-left">';
     details += '<div class="vehicle-image">';
     details +=
       '<img src="' +
@@ -103,24 +97,36 @@ Util.buildVehicleDetails = async function (vehicle) {
       vehicle.inv_model +
       ' on CSE Motors" class="vehicle-img"/>';
     details += "</div>";
-    details += '<div class="vehicle-info">';
-    details += "<h2>Vehicle Details</h2>";
-    details += "<ul>";
-    details += "<li><strong>Make:</strong> " + vehicle.inv_make + "</li>";
-    details += "<li><strong>Model:</strong> " + vehicle.inv_model + "</li>";
-    details += "<li><strong>Year:</strong> " + vehicle.inv_year + "</li>";
+    details += "</div>";
+    details += '<div class="vehicle-right">';
     details +=
-      "<li><strong>Price:</strong> $" +
+      "<h1 class='vehicle-title'>" +
+      vehicle.inv_year +
+      " " +
+      vehicle.inv_make +
+      " " +
+      vehicle.inv_model +
+      "</h1>";
+    details += '<div class="vehicle-info">';
+    details += "<ul>";
+    details +=
+      "<li class='vehicle-price'><strong>Price:</strong> $" +
       new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
       "</li>";
-    details += "<li><strong>Color:</strong> " + vehicle.inv_color + "</li>";
     details +=
-      "<li><strong>Description:</strong> " + vehicle.inv_description + "</li>";
+      "<li class='vehicle-description'><strong>Description:</strong> " +
+      vehicle.inv_description +
+      "</li>";
     details +=
-      "<li><strong>Classification:</strong> " +
-      vehicle.classification_name +
+      "<li class='vehicle-color'><strong>Color:</strong> " +
+      vehicle.inv_color +
+      "</li>";
+    details +=
+      "<li class='vehicle-miles'><strong>Miles:</strong> " +
+      vehicle.inv_miles +
       "</li>";
     details += "</ul>";
+    details += "</div>";
     details += "</div>";
     details += "</div>";
   } else {
