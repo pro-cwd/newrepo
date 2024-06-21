@@ -27,19 +27,21 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
-async function getVehicleById(inventoryId) {
+/* ***************************
+ *  Get a specific vehicle by inventory ID
+ * ************************** */
+async function getVehicleById(inv_id) {
   try {
     const data = await pool.query(
       `SELECT * FROM public.inventory AS i
       JOIN public.classification AS c
       ON i.classification_id = c.classification_id
-      WHERE i.inventory_id = $1`,
-      [inventoryId]
+      WHERE i.inv_id = $1`,
+      [inv_id]
     );
-    return data.rows; // Assuming only one vehicle corresponds to the inventory ID
+    return data.rows;
   } catch (error) {
-    console.error("getVehicleById error: " + error);
-    throw error; // Propagate the error for handling in upper layers
+    console.error("getVehicleById error " + error);
   }
 }
 

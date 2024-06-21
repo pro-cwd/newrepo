@@ -7,7 +7,7 @@ router.use(express.static(path.join(__dirname, "../public")));
 
 // Serve CSS files from the correct directory
 
-const routes = ["type", "detail"];
+const routes = ["type", "details"];
 
 routes.forEach((route) => {
   router.use(

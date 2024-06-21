@@ -34,7 +34,7 @@ Util.buildClassificationGrid = async function (data) {
     data.forEach((vehicle) => {
       grid += "<li class='grid-item'>";
       grid +=
-        '<a href="../../inv/detail/' +
+        '<a href="/inv/details/' +
         vehicle.inv_id +
         '" title="View ' +
         vehicle.inv_make +
@@ -81,37 +81,53 @@ Util.buildClassificationGrid = async function (data) {
  * Build the vehicle detail view HTML
  * ************************************ */
 
-Util.buildVehicleDetailPage = function (vehicle) {
-  let detailPage;
-  if (vehicle.length > 0) {
-    detailPage = `
-      <div class="vehicle-detail-container">
-        <h1>${vehicle.inv_make} ${vehicle.inv_model}</h1>
-        <div class="vehicle-detail-content">
-          <img src="${vehicle.inv_image}" alt="Image of ${vehicle.inv_make} ${
-      vehicle.inv_model
-    } on CSE Motors" class="vehicle-img"/>
-          <div class="vehicle-info">
-            <h2>Vehicle Details</h2>
-            <p><strong>Make:</strong> ${vehicle.inv_make}</p>
-            <p><strong>Model:</strong> ${vehicle.inv_model}</p>
-            <p><strong>Year:</strong> ${vehicle.inv_year}</p>
-            <p><strong>Price:</strong> $${new Intl.NumberFormat("en-US").format(
-              vehicle.inv_price
-            )}</p>
-            <p><strong>Mileage:</strong> ${new Intl.NumberFormat(
-              "en-US"
-            ).format(vehicle.inv_miles)} miles</p>
-            <p><strong>Description:</strong> ${vehicle.inv_description}</p>
-          </div>
-        </div>
-      </div>
-    `;
+Util.buildVehicleDetails = async function (vehicle) {
+  let details;
+
+  if (vehicle) {
+    details = '<div id="vehicle-details" class="details-container">';
+    details +=
+      "<h1>" +
+      vehicle.inv +
+      vehicle.inv_make +
+      " " +
+      vehicle.inv_model +
+      "</h1>";
+    details += '<div class="vehicle-image">';
+    details +=
+      '<img src="' +
+      vehicle.inv_image +
+      '" alt="Image of ' +
+      vehicle.inv_make +
+      " " +
+      vehicle.inv_model +
+      ' on CSE Motors" class="vehicle-img"/>';
+    details += "</div>";
+    details += '<div class="vehicle-info">';
+    details += "<h2>Vehicle Details</h2>";
+    details += "<ul>";
+    details += "<li><strong>Make:</strong> " + vehicle.inv_make + "</li>";
+    details += "<li><strong>Model:</strong> " + vehicle.inv_model + "</li>";
+    details += "<li><strong>Year:</strong> " + vehicle.inv_year + "</li>";
+    details +=
+      "<li><strong>Price:</strong> $" +
+      new Intl.NumberFormat("en-US").format(vehicle.inv_price) +
+      "</li>";
+    details += "<li><strong>Color:</strong> " + vehicle.inv_color + "</li>";
+    details +=
+      "<li><strong>Description:</strong> " + vehicle.inv_description + "</li>";
+    details +=
+      "<li><strong>Classification:</strong> " +
+      vehicle.classification_name +
+      "</li>";
+    details += "</ul>";
+    details += "</div>";
+    details += "</div>";
   } else {
-    detailPage =
-      '<p class="notice">Sorry, vehicle details are not available.</p>';
+    details = '<p class="notice">Sorry, no vehicle details could be found.</p>';
   }
-  return detailPage;
+
+  return details;
 };
 
 /* ****************************************
