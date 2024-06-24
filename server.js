@@ -71,7 +71,6 @@ const host = process.env.HOST || `dpg-cp2oihcf7o1s73bkkih0-a`;
 /* ***********************
  * Log statement to confirm server operation
  *************************/
-
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`);
 });
