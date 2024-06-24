@@ -65,7 +65,7 @@ app.use(async (req, res, next) => {
  * Values from .env (environment) file
  *************************/
 
-const port = process.env.PORT || 5432;
+const port = process.env.PORT;
 const host = process.env.HOST || "dpg - cp2oihcf7o1s73bkkih0 - a";
 
 /* ***********************
