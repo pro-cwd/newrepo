@@ -66,7 +66,7 @@ app.use(async (req, res, next) => {
  *************************/
 
 const port = process.env.PORT;
-const host = process.env.HOST;
+const host = process.env.HOST || "dpg-cp2oihcf7o1s73bkkih0-a";
 
 /* ***********************
  * Log statement to confirm server operation
