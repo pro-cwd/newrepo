@@ -53,7 +53,7 @@ app.use(async (req, res, next) => {
     } else {
       message = "Oh no! There was a crash. Maybe try a different route?";
     }
-    res.render("errors/error", {
+    res.status(err.status || 500).render("errors/error", {
       title: err.status || "Server Error",
       message,
       nav,
@@ -64,12 +64,14 @@ app.use(async (req, res, next) => {
  * Local Server Information
  * Values from .env (environment) file
  *************************/
+
 const port = process.env.PORT;
 const host = process.env.HOST;
 
 /* ***********************
  * Log statement to confirm server operation
  *************************/
+
 app.listen(port, () => {
   console.log(`app listening on ${host}:${port}`);
 });
