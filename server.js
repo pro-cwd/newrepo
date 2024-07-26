@@ -10,6 +10,7 @@ const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
 const env = require("dotenv").config();
 const app = express();
+const errorRoutes = require("./routes/errorRoute");
 const static = require("./routes/static");
 const utilities = require("./utilities/");
 const inventoryRoute = require("./routes/inventoryRoute");
@@ -37,6 +38,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 //inventory routes - unit 3, activity
 // Inventory routes
 app.use("/inv", inventoryRoute);
+// Error handling middleware
+app.use("/error", errorRoutes);
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

@@ -9,7 +9,6 @@ const invCont = {};
 invCont.buildByClassificationId = async function (req, res, next) {
   const classification_id = req.params.classificationId;
   const data = await invModel.getInventoryByClassificationId(classification_id);
-  console.log("data aqui", data);
   const grid = await utilities.buildClassificationGrid(data);
   let nav = await utilities.getNav();
   const className = data[0].classification_name;
@@ -26,9 +25,7 @@ invCont.buildByClassificationId = async function (req, res, next) {
 invCont.buildByVehicleDetailsId = async function (req, res, next) {
   const vehicleDetailsId = req.params.vehicleDetailsId;
   const data = await invModel.getVehicleById(vehicleDetailsId); // Assuming there's a method in invModel to fetch details by ID
-  console.log("aqui data de details", data);
   const grid = await utilities.buildVehicleDetails(data);
-  console.log("aqui grid de details", grid);
   let nav = await utilities.getNav();
   const className = data.classification_name;
   res.render("./inventory/vehicleDetails", {
