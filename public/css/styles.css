@@ -417,3 +417,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
+/* notice */
+.notice {
+  color: blue;
+}

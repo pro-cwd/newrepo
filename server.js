@@ -14,7 +14,8 @@ const errorRoutes = require("./routes/errorRoute");
 const static = require("./routes/static");
 const utilities = require("./utilities/");
 const inventoryRoute = require("./routes/inventoryRoute");
-// const pool = require("./database");
+const session = require("express-session");
+const pool = require("./database/");
 
 /* ***********************
  * View Engine and Templates
@@ -26,6 +27,29 @@ app.set("layout", "./layouts/layout"); // not at views root
 // Añade esto en server.js antes de las rutas estáticas
 app.use((req, res, next) => {
   console.log(`Request URL: ${req.url}`);
+  next();
+});
+
+/* ***********************
+ * Middleware
+ * ************************/
+app.use(
+  session({
+    store: new (require("connect-pg-simple")(session))({
+      createTableIfMissing: true,
+      pool,
+    }),
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    name: "sessionId",
+  })
+);
+
+// Express Messages Middleware
+app.use(require("connect-flash")());
+app.use(function (req, res, next) {
+  res.locals.messages = require("express-messages")(req, res);
   next();
 });
 
