@@ -136,10 +136,6 @@ Util.buildVehicleDetails = async function (vehicle) {
   return details;
 };
 
-/* **************************************
- * Build the 404 view view HTML
- * ************************************ */
-
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for

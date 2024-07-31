@@ -5,6 +5,7 @@
 /* ***********************
  * Require Statements
  *************************/
+const accountRoute = require("./routes/accountRoute");
 const baseController = require("./controllers/baseController");
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
@@ -16,19 +17,6 @@ const utilities = require("./utilities/");
 const inventoryRoute = require("./routes/inventoryRoute");
 const session = require("express-session");
 const pool = require("./database/");
-
-/* ***********************
- * View Engine and Templates
- *************************/
-app.set("view engine", "ejs");
-app.use(expressLayouts);
-app.set("layout", "./layouts/layout"); // not at views root
-
-// Añade esto en server.js antes de las rutas estáticas
-app.use((req, res, next) => {
-  console.log(`Request URL: ${req.url}`);
-  next();
-});
 
 /* ***********************
  * Middleware
@@ -54,6 +42,19 @@ app.use(function (req, res, next) {
 });
 
 /* ***********************
+ * View Engine and Templates
+ *************************/
+app.set("view engine", "ejs");
+app.use(expressLayouts);
+app.set("layout", "./layouts/layout"); // not at views root
+
+// Añade esto en server.js antes de las rutas estáticas
+app.use((req, res, next) => {
+  console.log(`Request URL: ${req.url}`);
+  next();
+});
+
+/* ***********************
  * Routes
  *************************/
 app.use(static);
@@ -62,6 +63,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome));
 //inventory routes - unit 3, activity
 // Inventory routes
 app.use("/inv", inventoryRoute);
+//account login
+app.use("/account", accountRoute);
 // Error handling middleware
 app.use("/error", errorRoutes);
 
