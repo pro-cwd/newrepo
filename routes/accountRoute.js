@@ -10,4 +10,13 @@ const utilities = require("../utilities");
  * ********************* */
 router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
+/* *********************
+ * Deliver login view
+ * Unit 4, deliver login view activity
+ * ********************* */
+router.get(
+  "/register",
+  utilities.handleErrors(accountController.buildRegister)
+);
+
 module.exports = router;
