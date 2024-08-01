@@ -8,6 +8,6 @@ const utilities = require("../utilities");
  * Deliver login view
  * Unit 4, deliver login view activity
  * ********************* */
-router.get("/account", utilities.handleErrors(accountController.buildLogin));
+router.get("/login", utilities.handleErrors(accountController.buildLogin));
 
 module.exports = router;

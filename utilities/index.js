@@ -136,6 +136,10 @@ Util.buildVehicleDetails = async function (vehicle) {
   return details;
 };
 
+/* **************************************
+ * login
+ * ************************************** */
+
 /* ****************************************
  * Middleware For Handling Errors
  * Wrap other function in this for
