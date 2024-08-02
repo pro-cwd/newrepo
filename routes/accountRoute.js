@@ -19,4 +19,11 @@ router.get(
   utilities.handleErrors(accountController.buildRegister)
 );
 
+/* *********************
+ * enable the registration route
+ ************************ */
+router.post(
+  "/register",
+  utilities.handleErrors(accountController.registerAccount)
+);
 module.exports = router;

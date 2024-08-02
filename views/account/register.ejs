@@ -9,22 +9,22 @@
     <% { %>
       <div class="form-register-box">
         <div class="register-container">
-            <form action="/register" method="POST">
+            <form action="/inv/account/register" method="post">
                 <div class="form-group">
                     <label for="firstName">First Name:</label>
-                    <input type="text" id="firstName" name="firstName" required>
+                    <input type="text" id="firstName" name="account_firstname" required>
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last Name:</label>
-                    <input type="text" id="lastName" name="lastName" required>
+                    <input type="text" id="lastName" name="account_lastname" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <input type="email" id="email" name="account_email" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password:</label>
-                    <input type="password" id="pword" name="pword" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}">
+                    <input type="password" id="pword" name="account_password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}">
                     <button type="button" id="pswdBtn">Show Password</button>
                     <p class="password-requirements">
                         Password must be at least 12 characters long, contain at least 1 capital letter, 1 number, and 1 special character.
