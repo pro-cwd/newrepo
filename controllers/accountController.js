@@ -114,7 +114,7 @@ async function accountLogin(req, res) {
           maxAge: 3600 * 1000,
         });
       }
-      return res.redirect("/account/management");
+      return res.redirect("/inv/account/management");
     }
   } catch (error) {
     return new Error("Access Forbidden");
