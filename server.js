@@ -29,7 +29,7 @@ app.use(
       createTableIfMissing: true,
       pool,
     }),
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'secreto_por_defecto',
     resave: true,
     saveUninitialized: true,
     name: "sessionId",
@@ -103,8 +103,8 @@ app.use(async (req, res, next) => {
  * Values from .env (environment) file
  *************************/
 
-const port = process.env.PORT || 5432;
-const host = process.env.HOST || `dpg-cquce55svqrc73bmk4ig-a`;
+const port = process.env.PORT;
+const host = process.env.HOST;
 
 /* ***********************
  * Log statement to confirm server operation
