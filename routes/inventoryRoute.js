@@ -12,7 +12,7 @@ router.get(
 
 // Route to build inventory by vehicle details view
 router.get(
-  "/details/:vehicleDetailsId",
+  "/detail/:vehicleDetailsId",
   utilities.handleErrors(invController.buildByVehicleDetailsId)
 );
 
