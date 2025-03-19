@@ -12,8 +12,26 @@ router.get(
 
 // Route to build inventory by vehicle details view
 router.get(
-  "/detail/:vehicleDetailsId",
+  "/details/:vehicleDetailsId",
   utilities.handleErrors(invController.buildByVehicleDetailsId)
 );
+
+// Route to management view
+router.get("/", invController.renderManagementView);
+
+// Prute to process classifcation
+router.get('/add-classification',  utilities.handleErrors(invController.renderAddClassificationView));
+
+// Route to process the form submission
+router.post("/add-classification", utilities.handleErrors(invController.addNewClassification));
+
+
+// Ruta para mostrar la vista de agregar inventario
+router.get("/add-inventory", invController.showAddInventoryView);
+
+// Ruta para procesar la adición de un vehículo (con validación)
+router.post("/add-inventory", invController.addInventory);
+
+
 
 module.exports = router;

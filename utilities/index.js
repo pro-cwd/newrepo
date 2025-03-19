@@ -1,5 +1,6 @@
 const invModel = require("../models/inventory-model");
 const jwt = require("jsonwebtoken");
+const { body, validationResult } = require("express-validator");
 require("dotenv").config();
 
 const Util = {};
@@ -54,7 +55,7 @@ Util.buildClassificationGrid = async function (data) {
       grid += "<hr />";
       grid += "<h2>";
       grid +=
-        '<a href="../../inv/detail/' +
+        '<a href="../../inv/details/' +
         vehicle.inv_id +
         '" title="View ' +
         vehicle.inv_make +
@@ -175,5 +176,59 @@ Util.checkJWTToken = (req, res, next) => {
     next();
   }
 };
+
+Util.buildClassificationList = async function (classification_id = null) {
+  let data = await invModel.getClassifications()
+  let classificationList =
+    '<select name="classification_id" id="classificationList" required>'
+  classificationList += "<option value=''>Choose a Classification</option>"
+  data.rows.forEach((row) => {
+    classificationList += '<option value="' + row.classification_id + '"'
+    if (
+      classification_id != null &&
+      row.classification_id == classification_id
+    ) {
+      classificationList += " selected "
+    }
+    classificationList += ">" + row.classification_name + "</option>"
+  })
+  classificationList += "</select>"
+  return classificationList
+}
+
+/* ***************************
+* midlaware classification
+******* */
+Util.classificationValidation = (req, res, next) => {
+  const { classification_name } = req.body;
+  if (!classification_name || !/^[a-zA-Z0-9]+$/.test(classification_name)) {
+      req.flash("message", "Invalid classification name.");
+      return res.redirect("/inv/add-classification");
+  }
+  next();
+};
+
+ Util.validateInventory = function () {
+    return [
+      body("inv_make").notEmpty().withMessage("Make is required"),
+      body("inv_model").notEmpty().withMessage("Model is required"),
+      body("inv_year")
+        .isInt({ min: 1886, max: new Date().getFullYear() })
+        .withMessage(`Year must be between 1886 and ${new Date().getFullYear()}`),
+      body("inv_price").isFloat({ min: 0 }).withMessage("Price must be a positive number"),
+      body("inv_miles").isInt({ min: 0 }).withMessage("Miles must be a positive integer"),
+      body("inv_color").notEmpty().withMessage("Color is required"),
+      body("classification_id").isInt().withMessage("Valid classification is required"),
+
+      (req, res, next) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+          req.flash("error", errors.array().map((err) => err.msg).join(" | "));
+          return res.redirect("/inv/add-inventory");
+        }
+        next();
+      },
+    ];
+  }
 
 module.exports = Util;

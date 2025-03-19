@@ -49,6 +49,9 @@ app.use(cookieParser());
 
 app.use(utilities.checkJWTToken);
 
+app.use(express.urlencoded({ extended: true }));
+
+
 /* ***********************
  * View Engine and Templates
  *************************/

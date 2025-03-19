@@ -1,0 +1,56 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+    <%- messages() %>
+
+    <% { %>
+        <form action="/inv/add-inventory" method="POST" id="addInventoryForm">
+             <!-- Selector de Clasificación -->
+            <label for="classification_id">Classification:</label>
+            <select name="classification_id" id="classificationid" placeholder="Choose a classification" required>
+                <% if (Array.isArray(classificationOptions) && classificationOptions.length > 0) { %>
+                    <% classificationOptions.forEach(classification => { %>
+                        <option value="<%= classification.classification_id %>">
+                            <%= classification.classification_name %>
+                        </option>
+                    <% }); %>
+                <% } else { %>
+                    <option value="">No classifications available</option>
+                <% } %>
+            </select>
+            <label for="inv_make">Make:</label>
+            <input type="text" name="inv_make" id="invmake" placeholder="Min 3 charecter" required value="<%= inv_make || '' %>">
+            
+            <label for="inv_model">Model:</label>
+            <input type="text" name="inv_model" id="invmodel" placeholder="Min 3 charecter" required value="<%= inv_model || '' %>">
+            
+            <label for="inv_year">Year:</label>
+            <input type="number" name="inv_year" id="invyear" placeholder="4-digit year" required value="<%= inv_year || '' %>">
+            
+            <label for="inv_description">Description:</label>
+            <textarea name="inv_description" id="invdescription" required><%= inv_description || '' %></textarea>
+            
+            <label for="inv_image">Image Path:</label>
+            <input type="text" name="inv_image" id="invimage" value="/images/no-image.png">
+            
+            <label for="inv_thumbnail">Thumbnail Path:</label>
+            <input type="text" name="inv_thumbnail" id="invthumbnail" value="/images/no-image-thumbnail.png">
+            
+            <label for="inv_price">Price:</label>
+            <input type="number" step="0.01" name="inv_price" id="invprice" placeholder="Decimal or integer" required value="<%= inv_price || '' %>">
+            
+            
+            <label for="inv_miles">Miles:</label>
+            <input type="number" name="inv_miles" id="invmiles" placeholder="Digits only" required value="<%= inv_miles || '' %>">
+            
+            <label for="inv_color">Color:</label>
+            <input type="text" name="inv_color" id="invcolor" required value="<%= inv_color || '' %>">
+            
+            <label for="classification_id">Classification:</label>
+            
+            <button type="submit">Add Vehicle</button>
+        </form>
+    <% } %>

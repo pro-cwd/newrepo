@@ -573,3 +573,66 @@ input:required:invalid, input:focus:invalid {
   background-position: right top;
   background-repeat: no-repeat;
   }
+
+/* Contenedor del formulario */
+#addInventoryForm {
+  margin: auto;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Estilos de etiquetas */
+#addInventoryForm label {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* Estilos de los inputs y textarea */
+#addInventoryForm input,
+#addInventoryForm textarea,
+#addInventoryForm select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+/* Ajustes para el textarea */
+#addInventoryForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Botón de enviar */
+#addInventoryForm button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+#addInventoryForm button:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  #addInventoryForm {
+      max-width: 100%;
+      padding: 15px;
+  }
+}

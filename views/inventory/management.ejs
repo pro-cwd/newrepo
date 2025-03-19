@@ -1,0 +1,18 @@
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+    <%- messages() %>
+
+    <% { %>
+        <section>
+            <h2>Manage Inventory</h2>
+            <p>Choose an option below to manage inventory:</p>
+            <ul>
+                <li><a href="/inv/add-classification">Add New Classification</a></li>
+                <li><a href="/inv/add-inventory">Add New Inventory</a></li>
+            </ul>
+        </section>
+      <% } %>
